@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 from django.utils import timezone
 
+
 User = get_user_model()
 
 
