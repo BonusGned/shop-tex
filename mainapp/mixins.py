@@ -5,7 +5,6 @@ from .models import Category, Cart, Customer, Notebook, Smartphone
 
 
 class CategoryDetailMixin(SingleObjectMixin):
-
     CATEGORY_SLUG2PRODUCT_MODEL = {
         'notebooks': Notebook,
         'smartphones': Smartphone

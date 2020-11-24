@@ -27,7 +27,6 @@ class BaseView(CartMixin, View):
 
 
 class ProductDetailView(CartMixin, CategoryDetailMixin, DetailView):
-
     CT_MODEL_MODEL_CLASS = {
         'notebook': Notebook,
         'smartphone': Smartphone
@@ -50,7 +49,6 @@ class ProductDetailView(CartMixin, CategoryDetailMixin, DetailView):
 
 
 class CategoryDetailView(CartMixin, CategoryDetailMixin, DetailView):
-
     model = Category
     queryset = Category.objects.all()
     context_object_name = 'category'
@@ -161,4 +159,3 @@ class MakeOrderView(CartMixin, View):
             messages.add_message(request, messages.INFO, 'Спасибо за заказ! Менеджер с Вами свяжется')
             return HttpResponseRedirect('/')
         return HttpResponseRedirect('/checkout/')
-
