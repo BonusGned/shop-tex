@@ -35,7 +35,7 @@ class Product(models.Model):
         return self.__class__.__name__.lower()
 
     def get_absolute_url(self):
-        return reverse('product_detail.html', {'slug': self.slug})
+        return reverse('product_detail', kwargs={'slug': self.slug})
 
 
 class CartProduct(models.Model):
@@ -49,7 +49,7 @@ class CartProduct(models.Model):
         return f'Продукт: {self.product.title} (для корзины)'
 
     def save(self, *args, **kwargs):
-        self.final_price = self.qty * self.content_object.price
+        self.final_price = self.qty * self.product.price
         super().save(*args, **kwargs)
 
 
