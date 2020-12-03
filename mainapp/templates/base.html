@@ -57,11 +57,7 @@
                 {% endif %}
                 <li class="nav-item">
                     {% if request.user.is_authenticated %}
-                        <span class="navbar text text-light">Здравствуйте, <span class="badge badge-danger">
-                            <a style="text-decoration: none; color: white; font-size: 14px;"
-                               href="#">{{ request.user.username }}</a>
-                        </span>
-                    </span> | <a href="{% url 'logout' %}">Выйти</a>
+                        <span class="navbar text text-light">Здравствуйте,  <span class="badge badge-danger"><a style="text-decoration: none; color: white; font-size: 14px;" href="{% url 'profile' %}">{{ request.user.username }}</a></span><a href="{% url 'logout' %}" style="color: white; text-decoration: none;">Выйти</a></span>
                     {% endif %}
                 </li>
             </ul>

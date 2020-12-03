@@ -38,6 +38,26 @@ class Product(models.Model):
         return reverse('product_detail', kwargs={'slug': self.slug})
 
 
+class ProductFeatures(models.Model):
+    RADIO = 'radio'
+    CHECKBOX = 'checkbox'
+
+    FILTER_TYPE_CHOICES = (
+        (RADIO, 'Радиокнопка'),
+        (CHECKBOX, 'Чекбокс')
+    )
+    feature_key = models.CharField(max_length=100, verbose_name='Ключ характеристка')
+    feature_name = models.CharField(max_length=255, verbose_name='Наименование харктеристики')
+    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
+    postfix_for_value = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+        verbose_name='Постфикс для значения',
+        help_text = ''
+    )
+
+
 class CartProduct(models.Model):
     user = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
     cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE, related_name='related_products')
